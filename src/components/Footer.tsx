@@ -1,100 +1,127 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { ArrowRight } from 'lucide-react';
 
 const Footer = () => {
-  const footerLinks = {
-    Products: [
-      { name: 'LangChain', href: '#' },
-      { name: 'LangSmith', href: '#' },
-      { name: 'LangGraph', href: '#' }
-    ],
-    Resources: [
-      { name: 'Guides', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Customer Stories', href: '#' },
-      { name: 'LangChain Academy', href: '#' },
-      { name: 'Community', href: '#' },
-      { name: 'Events', href: '#' },
-      { name: 'Changelog', href: '#' },
-      { name: 'Experts', href: '#' }
-    ],
-    'Python Docs': [
-      { name: 'LangGraph', href: '#' },
-      { name: 'LangSmith', href: '#' },
-      { name: 'LangChain', href: '#' }
-    ],
-    'JavaScript Docs': [
-      { name: 'LangGraph', href: '#' },
-      { name: 'LangSmith', href: '#' },
-      { name: 'LangChain', href: '#' }
-    ],
-    Company: [
-      { name: 'About', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'X', href: '#' },
-      { name: 'LinkedIn', href: '#' },
-      { name: 'YouTube', href: '#' },
-      { name: 'Marketing Assets', href: '#' },
-      { name: 'Security', href: '#' }
-    ]
-  };
+  const footerSections = [
+    {
+      title: 'Products',
+      links: [
+        'LangChain',
+        'LangSmith', 
+        'LangGraph',
+        'LangGraph Platform'
+      ]
+    },
+    {
+      title: 'Resources',
+      links: [
+        'Guides',
+        'Blog',
+        'Customer Stories',
+        'LangChain Academy',
+        'Community',
+        'Events',
+        'Changelog'
+      ]
+    },
+    {
+      title: 'Python Docs',
+      links: [
+        'LangGraph',
+        'LangSmith',
+        'LangChain'
+      ]
+    },
+    {
+      title: 'JavaScript Docs',
+      links: [
+        'LangGraph',
+        'LangSmith', 
+        'LangChain'
+      ]
+    },
+    {
+      title: 'Company',
+      links: [
+        'About',
+        'Careers',
+        'Security',
+        'Privacy Policy',
+        'Terms of Service'
+      ]
+    }
+  ];
 
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Main Footer Content */}
-        <div className="py-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Links Section */}
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-5 gap-8">
-            {Object.entries(footerLinks).map(([category, links]) => (
-              <div key={category}>
-                <h6 className="font-semibold mb-4 text-sm uppercase tracking-wide">
-                  {category}
-                </h6>
-                <ul className="space-y-3">
-                  {links.map((link) => (
-                    <li key={link.name}>
-                      <a 
-                        href={link.href}
-                        className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+        {/* Main Footer */}
+        <div className="py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Newsletter Section */}
+            <div className="lg:col-span-4">
+              <h6 className="font-semibold mb-4 text-sm">
+                Sign up for our newsletter to stay up to date
+              </h6>
+              <div className="flex gap-2 mb-8">
+                <Input 
+                  type="email" 
+                  placeholder="Your email..."
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/60 focus:border-white/40"
+                />
+                <Button 
+                  variant="secondary" 
+                  size="icon"
+                  className="bg-white text-primary hover:bg-gray-100 flex-shrink-0"
+                >
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
               </div>
-            ))}
-          </div>
 
-          {/* Newsletter Section */}
-          <div className="lg:col-span-4">
-            <h6 className="font-semibold mb-4 text-sm uppercase tracking-wide">
-              Sign up for our newsletter to stay up to date
-            </h6>
-            <div className="flex gap-2">
-              <Input 
-                type="email" 
-                placeholder="Your email..."
-                className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50"
-              />
-              <Button 
-                variant="secondary" 
-                size="icon"
-                className="shrink-0"
-              >
-                →
-              </Button>
+              {/* Social Links */}
+              <div className="space-y-3">
+                <h6 className="font-semibold text-sm">Follow us</h6>
+                <div className="flex space-x-4">
+                  <a href="#" className="text-white/70 hover:text-white text-sm">X</a>
+                  <a href="#" className="text-white/70 hover:text-white text-sm">LinkedIn</a>
+                  <a href="#" className="text-white/70 hover:text-white text-sm">YouTube</a>
+                  <a href="#" className="text-white/70 hover:text-white text-sm">GitHub</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Links Grid */}
+            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-5 gap-8">
+              {footerSections.map((section) => (
+                <div key={section.title}>
+                  <h6 className="font-semibold mb-4 text-sm uppercase tracking-wider">
+                    {section.title}
+                  </h6>
+                  <ul className="space-y-3">
+                    {section.links.map((link) => (
+                      <li key={link}>
+                        <a 
+                          href="#"
+                          className="text-white/70 hover:text-white transition-colors text-sm"
+                        >
+                          {link}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Logo */}
-        <div className="py-8">
+        {/* Logo Section */}
+        <div className="py-8 border-t border-white/20">
           <div className="flex items-center justify-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary-foreground rounded-md flex items-center justify-center">
-                <span className="text-primary font-bold text-lg">L</span>
+            <div className="flex items-center space-x-3">
+              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <span className="text-primary font-bold text-sm">🦜</span>
               </div>
               <span className="text-2xl font-bold">LangChain</span>
             </div>
@@ -102,21 +129,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="py-6 border-t border-primary-foreground/20">
+        <div className="py-6 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4 text-sm text-primary-foreground/70">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span>All systems operational</span>
-              </div>
+            <div className="flex items-center gap-2 text-sm text-white/70">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>All systems operational</span>
             </div>
-            <div className="flex gap-6 text-sm text-primary-foreground/70">
-              <a href="#" className="hover:text-primary-foreground transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary-foreground transition-colors">
-                Terms of Service
-              </a>
+            <div className="text-sm text-white/70">
+              © 2024 LangChain, Inc. All rights reserved.
             </div>
           </div>
         </div>

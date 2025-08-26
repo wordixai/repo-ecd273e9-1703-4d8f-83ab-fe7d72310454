@@ -4,52 +4,74 @@
 
 @layer base {
   :root {
-    /* LangChain Brand Colors */
-    --primary: 28 57 57; /* Dark teal #1C3939 */
-    --primary-foreground: 255 255 255; /* White */
-    --secondary: 248 247 255; /* Light purple #f8f7ff */
-    --secondary-foreground: 28 57 57; /* Dark teal */
-    --accent: 235 232 254; /* Lighter purple #ebe8fe */
-    --accent-foreground: 28 57 57; /* Dark teal */
-    --muted: 243 244 246; /* Gray-100 */
-    --muted-foreground: 107 114 128; /* Gray-500 */
-    --background: 255 255 255; /* White */
-    --foreground: 28 57 57; /* Dark teal */
-    --border: 229 231 235; /* Gray-200 */
-    --input: 229 231 235; /* Gray-200 */
-    --ring: 28 57 57; /* Dark teal */
-    --radius: 0.5rem;
+    /* LangChain Brand Colors - 精确匹配 */
+    --primary: 20 58 58; /* #143A3A - 更深的青色 */
+    --primary-foreground: 255 255 255;
+    --secondary: 248 249 250; /* 更浅的灰色背景 */
+    --secondary-foreground: 20 58 58;
+    --accent: 243 244 246; /* 浅灰色 */
+    --accent-foreground: 20 58 58;
+    --muted: 156 163 175; /* 中性灰色文字 */
+    --muted-foreground: 75 85 99;
+    --background: 255 255 255;
+    --foreground: 17 24 39; /* 深色文字 */
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 20 58 58;
+    --radius: 12px; /* 更大的圆角 */
 
-    /* Custom brand colors */
-    --brand-orange: 255 147 79; /* For orange accent */
-    --brand-green: 34 197 94; /* For green accent */
+    /* 品牌渐变色 */
+    --hero-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #cbd5e1 50%, #94a3b8 100%);
   }
 }
 
 @layer components {
-  .navbar-gradient {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.8) 100%);
+  .navbar-glass {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+  }
+
+  .hero-bg {
+    background: linear-gradient(135deg, 
+      #f8fafc 0%, 
+      #f1f5f9 20%, 
+      #e2e8f0 40%, 
+      #cbd5e1 60%, 
+      #94a3b8 80%, 
+      #64748b 100%
+    );
+    position: relative;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(148, 163, 184, 0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .text-primary-dark {
+    color: rgb(20 58 58);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 231, 235, 0.8);
   }
+}
 
-  .hero-gradient {
-    background: linear-gradient(135deg, #f8f7ff 0%, #ebe8fe 50%, #f8f7ff 100%);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
 
-  .text-gradient {
-    background: linear-gradient(135deg, #1C3939 0%, #2d5656 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .glass-effect {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .card-shadow {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-  }
+.floating-shape {
+  animation: float 6s ease-in-out infinite;
 }

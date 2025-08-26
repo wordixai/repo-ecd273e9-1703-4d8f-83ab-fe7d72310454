@@ -1,61 +1,32 @@
 const LogoMarquee = () => {
-  const startupLogos = [
-    { name: "Replit", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Unify", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Lovable", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Modern Treasury", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Clay", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-  ];
-
-  const enterpriseLogos = [
-    { name: "Ally", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Rakuten", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Klarna", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Elastic", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
-    { name: "Google", src: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=120&h=60&fit=crop&auto=format" },
+  // 使用真实的公司名称，但用占位符图片
+  const companies = [
+    "Replit", "Unify", "Lovable", "Modern Treasury", "Clay",
+    "Ally", "Rakuten", "Klarna", "Elastic", "Google"
   ];
 
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h4 className="text-2xl lg:text-3xl font-semibold text-primary">
-            LangChain products power top engineering teams, from{' '}
-            <span className="bg-accent px-2 py-1 rounded-lg">startups</span>{' '}
+          <h4 className="text-2xl lg:text-3xl font-semibold text-primary-dark leading-tight">
+            LangChain products power top engineering teams,<br className="hidden sm:block" />
+            from{' '}
+            <span className="bg-blue-50 text-blue-700 px-3 py-1 rounded-lg font-medium">startups</span>{' '}
             to{' '}
-            <span className="bg-muted px-2 py-1 rounded-lg">global enterprises</span>
+            <span className="bg-gray-50 text-gray-700 px-3 py-1 rounded-lg font-medium">global enterprises</span>
           </h4>
         </div>
 
-        {/* Desktop Logo Grid */}
-        <div className="hidden md:block space-y-8">
-          <div className="flex justify-center items-center space-x-12 opacity-60">
-            {startupLogos.map((logo) => (
-              <div key={logo.name} className="flex items-center justify-center w-24 h-12 grayscale hover:grayscale-0 transition-all">
-                <img src={logo.src} alt={logo.name} className="max-w-full max-h-full object-contain" />
+        {/* Logo Grid - 模拟真实布局 */}
+        <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-12 opacity-60">
+          {companies.map((company, index) => (
+            <div key={company} className="flex items-center justify-center h-8 grayscale hover:grayscale-0 transition-all duration-300">
+              <div className="text-lg font-semibold text-gray-400 hover:text-gray-600 transition-colors">
+                {company}
               </div>
-            ))}
-          </div>
-          <div className="flex justify-center items-center space-x-12 opacity-60">
-            {enterpriseLogos.map((logo) => (
-              <div key={logo.name} className="flex items-center justify-center w-24 h-12 grayscale hover:grayscale-0 transition-all">
-                <img src={logo.src} alt={logo.name} className="max-w-full max-h-full object-contain" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Logo Marquee */}
-        <div className="md:hidden">
-          <div className="overflow-hidden">
-            <div className="animate-slide-marquee flex space-x-8 opacity-60">
-              {[...startupLogos, ...enterpriseLogos, ...startupLogos].map((logo, index) => (
-                <div key={index} className="flex items-center justify-center w-24 h-12 flex-shrink-0">
-                  <img src={logo.src} alt={logo.name} className="max-w-full max-h-full object-contain grayscale" />
-                </div>
-              ))}
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
